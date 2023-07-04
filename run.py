@@ -1,9 +1,10 @@
 print ("Welcome to Battleships online game")
 
+# funcion needed to validate inputs
 
-name = input("Please input your name: ")
-size = input("Please enter your desired board size: ")
-num_ships = input("Please enter the desired number of ships: ")
+name = "Ty"
+size = 7
+num_ships = 4
 
 class Board:
     """
@@ -18,13 +19,30 @@ class Board:
         self.size = size
         self.num_ships = num_ships
 
-    def player_board(self):
-        return f"Your name: {self.name}, board size: {self.size}, number of battleships: {self.num_ships}"
+    #def player_board(self):
+        # return f"Your name: {self.name}, board size: {self.size}, number of battleships: {self.num_ships}"
 
-    def computer_board(self):
-        return f"Computer, board size: {self.size}, number of battleships: {self.num_ships}"
+    def computer_board():
+        for i in blank_board:
+            for j in i:
+                print(j, end = " ")
+            print() 
 
-player = Board(name, size, num_ships)
-print(player.player_board())
-computer = Board("Computer", size, num_ships)
-print(computer.computer_board())
+def main ():
+    player = Board(name, size, num_ships)
+    print(player.player_board())
+    computer = Board("Computer", size, num_ships)
+    print(computer.computer_board())
+
+# main()
+
+blank_board = []
+for i in range(size):
+    blank_board.append([])
+    for x in range(1, (size+1)):
+        blank_board[i].append(" * ")
+
+print("Computer board")
+print()
+Board.computer_board()
+print()
