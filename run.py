@@ -1,6 +1,10 @@
 print ("Welcome to Battleships online game")
 
 
+name = input("Please input your name: ")
+size = input("Please enter your desired board size: ")
+num_ships = input("Please enter the desired number of ships: ")
+
 class Board:
     """
     Class to hold the details relevant to setting a game board.
@@ -17,6 +21,10 @@ class Board:
     def player_board(self):
         return f"Your name: {self.name}, board size: {self.size}, number of battleships: {self.num_ships}"
 
-player = Board("Ty", 5, 3)
-print(player.player_board())
+    def computer_board(self):
+        return f"Computer, board size: {self.size}, number of battleships: {self.num_ships}"
 
+player = Board(name, size, num_ships)
+print(player.player_board())
+computer = Board("Computer", size, num_ships)
+print(computer.computer_board())
