@@ -1,32 +1,92 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleships - Python based game
 
-Welcome,
+Intro
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+[Am I responsive link]
 
-## Reminders
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+Link to live project: ...Heroku
 
-## Creating the Heroku app
+# User Experience
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+The target audience for this site ...
 
-1. `heroku/python`
-2. `heroku/nodejs`
+The user goals for new and returning users are the same:
+...
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+# Development Planes
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+To develop the site in a structured manner the 5 development planes have been considered. Working through these in a systematic manner allows the key building blocks of the site to be in place before fine tuning the aesthetics. Working methodically in this way should result in the initial release being much closer to the final desired output. 
 
-Connect your GitHub repository and deploy as normal.
+## Strategy
 
-## Constraints
+## Scope
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Structure
 
----
+## Skeleton
 
-Happy coding!
+Review against the content requirements: 
+
+## Surface:
+
+### Colour
+
+### Font
+
+### Images and Icons
+
+# Features: 
+
+# Technologies used:
+
+## Coding languages used: 
+
+Python
+
+## External resources: 
+
+Am I Responsive?:
+Used to test out how friendly the site is across various screen sizes. The responsive nature of the site is shown at the top of this document in the mock-up.
+
+Lucid Chart:
+Simple flow chart online software used to draft out how the Python programme will need to work
+
+Git-Hub / Code Anywhere:
+Git-hub is used to store the project files and is used to host the site. Code Anywhere was used as the IDE to code the website.
+
+Heroku:
+[Deployed] 
+
+# Accessibility: 
+
+[Consider this in python platform???]
+
+Lighthouse?
+
+# Testing
+[Refer to feedback from last assignment]
+
+## User Goals
+The user goals were set-up at the start of development during the Strategy phase and reviewed again during the Skeleton phase. The content requirements have been reviewed against the finished website: 
+
+## Manual Testing
+### Functionality testing:
+
+### Responsiveness 
+
+### Code Validation
+
+PEP8 
+
+# Bugs
+
+# Deployment
+
+
+
+# Credits 
+
+[refer to feedback from last assignment on this]
+
+## Acknowledgements:
