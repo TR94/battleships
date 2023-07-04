@@ -1,9 +1,5 @@
 print ("Welcome to Battleships online game")
-name = input("Please input player name: ")
-size = input("Please input the desired size of the game board: ")
-num_ships = input("Please input the number of ships for the game: ")
 
-player = Board(name, size, num_ships, "player")
 
 class Board:
     """
@@ -13,20 +9,14 @@ class Board:
     Function to print the board for each round based on the information
     held in the class.
     """
-    def __init__(self, name, size, num_ships, type):
+    def __init__(self, name, size, num_ships):
         self.name = name
         self.size = size
         self.num_ships = num_ships
-        self.type = type
-        self.guesses = []
-        self.ships = []
 
-    def print_board(type):
-        print()
+    def player_board(self):
+        return f"Your name: {self.name}, board size: {self.size}, number of battleships: {self.num_ships}"
 
-    def player_board(player):
-        return (f"Your name: {self.name}, board size: {self.size}, number of battleships: {self.num_ships}")
+player = Board("Ty", 5, 3)
+print(player.player_board())
 
-
-
-print(player_board)
