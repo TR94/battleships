@@ -21,6 +21,16 @@ class Board:
         self.size = size
         self.num_ships = num_ships
 
+    # Creates random numbers used for ship placement
+    def random_int(self):
+        """
+        computer_ships = []
+        for i in range (0, num_ships):
+            computer_ships.append([randint(0, size-1)],[randint(0, size-1)])
+        print(computer_ships)
+        """
+        return randint (0, size-1)
+
     # setting up blank board based on size input from player
     def build_board(self):
         blank_board = []
@@ -32,15 +42,8 @@ class Board:
         for i in blank_board:
             for j in i:
                 print(j, end = " ")
-            print("\n") 
+            print("\n")
 
-    # Creates random numbers used for ship placement
-    def random_int(self):
-        computer_ships = []
-        for i in range (0, num_ships):
-            computer_ships.append(randint(0, size-1))
-        print(computer_ships)
-    
     # Print player board
     def build_player_board():
         player = Board(name, size, num_ships)
@@ -49,13 +52,15 @@ class Board:
     # Print computer board
     def build_computer_board():
         computer = Board("Computer", size, num_ships)
-        print(computer.build_board())
+        computer_board = (computer.build_board())
+        for i in range(num_ships):
+            computer_board[Board.random_int(self.size)][Board.random_int(self.size)]= " @ "
+            print(computer_board)
    
 
 
 def main():
     Board.build_player_board()
     Board.build_computer_board()
-    Board.random_int(size)
 
 main()
