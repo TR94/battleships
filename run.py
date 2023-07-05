@@ -5,7 +5,7 @@ print ("Welcome to Battleships online game")
 # funcion needed to validate inputs
 
 name = "Ty"
-size = 3
+size = 5
 num_ships = 3
 
 class Board:
@@ -24,51 +24,33 @@ class Board:
     # setting up blank board based on size input from player
     def build_board(self):
         blank_board = []
+        print(f"{self.name}'s board")
         for i in range(self.size):
             blank_board.append([])
             for x in range(1, (self.size+1)):
                 blank_board[i].append(" * ")
-        return blank_board
-
-    # Print computer board
-    def build_computer_board():
-        computer_board = build_board()
         for i in blank_board:
             for j in i:
                 print(j, end = " ")
             print() 
 
+    # Print player board
+    def build_player_board():
+        player = Board(name, size, num_ships)
+        print(player.build_board())
+
+    # Print computer board
+    def build_computer_board():
+        computer = Board("Computer", size, num_ships)
+        print(computer.build_board())
 
 def main ():
-    player = Board(name, size, num_ships)
-    print(player.player_board())
-    computer = Board("Computer", size, num_ships)
-    print(computer.computer_board())
+    Board.build_computer_board()
+    Board.build_player_board()
 
-# main()
-
-# setting up blank board 
-"""
-blank_board = []
-for i in range(size):
-    blank_board.append([])
-    for x in range(1, (size+1)):
-        blank_board[i].append(" * ")
-return(blank_board)
-"""
-
-"""
-print("Computer board")
-print()
-Board.computer_board()
-print()
-"""
+main()
 
 def random_int(size):
     return randint(0, size-1)
 
 # action to print board from class 
-player = Board(name, size, num_ships)
-player.build_board()
-computer = Board("Computer", size, num_ships)
-computer.build_computer_board
