@@ -1,10 +1,12 @@
+from random import randint
+
 print ("Welcome to Battleships online game")
 
 # funcion needed to validate inputs
 
 name = "Ty"
-size = 7
-num_ships = 4
+size = 9
+num_ships = 3
 
 class Board:
     """
@@ -36,13 +38,21 @@ def main ():
 
 # main()
 
+# setting up blank board 
 blank_board = []
 for i in range(size):
     blank_board.append([])
     for x in range(1, (size+1)):
         blank_board[i].append(" * ")
+print(blank_board)
 
+"""
 print("Computer board")
 print()
 Board.computer_board()
 print()
+"""
+
+def random_int(size):
+    return randint(0, size-1)
+
