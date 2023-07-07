@@ -28,7 +28,7 @@ class Board:
         content = [["."]*cols for _ in range(rows)]
 
         # assign values at coordinates as needed (based on your grid)
-        grid = [(1,1,"@"),(2,3,"@"),(5,2,"@"),(4,6,"R"),(7,4,"L"),(6,6,"W"),(3,6,"L"),(2,6,"D"),(5,6,"O")]
+        grid = [(random_int(size),random_int(size),"@"),(random_int(size),random_int(size),"@"),(random_int(size),random_int(size),"@")]
         for (y,x,c) in grid: content[y][x] = c
 
         # build frame
@@ -56,7 +56,10 @@ class Board:
         num_line = num_line.replace("values",col_nums)
         print(num_line)
    
+def random_int(size):
+    # Helper function to return a random number appropriate to the board size
 
+    return randint(0, size-1)
 
 def main():
     Board.build_board()
