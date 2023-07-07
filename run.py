@@ -5,7 +5,7 @@ print ("Welcome to Battleships online game")
 # funcion needed to validate inputs
 
 name = "Ty"
-size = 5
+size = 8
 num_ships = 3
 
 class Board:
@@ -21,46 +21,44 @@ class Board:
         self.size = size
         self.num_ships = num_ships
 
-    # Creates random numbers used for ship placement
-    def random_int(self):
-        """
-        computer_ships = []
-        for i in range (0, num_ships):
-            computer_ships.append([randint(0, size-1)],[randint(0, size-1)])
-        print(computer_ships)
-        """
-        return randint (0, size-1)
+    def build_board():
+            # prepare the empty content
+        rows = size
+        cols = size
+        content = [["."]*cols for _ in range(rows)]
 
-    # setting up blank board based on size input from player
-    def build_board(self):
-        blank_board = []
-        print(f"{self.name}'s board \n")
-        for i in range(self.size):
-            blank_board.append([])
-            for x in range(1, (self.size+1)):
-                blank_board[i].append(" * ")
-        for i in blank_board:
-            for j in i:
-                print(j, end = " ")
-            print("\n")
+        # assign values at coordinates as needed (based on your grid)
+        grid = [(1,1,"@"),(2,3,"@"),(5,2,"@"),(4,6,"R"),(7,4,"L"),(6,6,"W"),(3,6,"L"),(2,6,"D"),(5,6,"O")]
+        for (y,x,c) in grid: content[y][x] = c
 
-    # Print player board
-    def build_player_board():
-        player = Board(name, size, num_ships)
-        print(player.build_board())
+        # build frame
+        width       = len(str(max(rows,cols)-1))
+        content_line = "# | values |"
 
-    # Print computer board
-    def build_computer_board():
-        computer = Board("Computer", size, num_ships)
-        computer_board = (computer.build_board())
-        for i in range(num_ships):
-            computer_board[Board.random_int(self.size)][Board.random_int(self.size)]= " @ "
-            print(computer_board)
+        dashes      = "-".join("-"*width for _ in range(cols))
+        frame_line   = content_line.replace("values",dashes)
+        frame_line   = frame_line.replace("#"," "*width)
+        frame_line   = frame_line.replace("| ","+-").replace(" |","-+")
+
+        # print grid
+        print(frame_line)
+        for i,row in enumerate(reversed(content),1):
+            values = " ".join(f"{v:{width}s}" for v in row)
+            line   = content_line.replace("values",values)
+            line   = line.replace("#",f"{rows-i:{width}d}")
+            print(line)
+        print(frame_line)
+
+        # x-axis numbers
+        num_line = content_line.replace("|"," ")
+        num_line = num_line.replace("#"," "*width)
+        col_nums = " ".join(f"{i:<{width}d}" for i in range(cols))
+        num_line = num_line.replace("values",col_nums)
+        print(num_line)
    
 
 
 def main():
-    Board.build_player_board()
-    Board.build_computer_board()
+    Board.build_board()
 
 main()
