@@ -1,12 +1,41 @@
 from random import randint
 
-print ("Welcome to Battleships online game")
-
 # funcion needed to validate inputs
+def get_data():
+    """
+    Get parameters from player
+    """
+    print("Welcome to Battleships online game")
+    name = input("Please enter your name: ")
+    size = input("Please enter the desired board size: ")
+    validate_size(size)
+    num_ships = input("Please enter the desired number of battleships: ")
+    validate_ships(size, num_ships)
 
-name = "Ty"
-size = 5
-num_ships = 3
+def validate_size(data):
+    """
+    Validates the board size data input before game begins 
+    """
+    try:
+        int(data)
+        if int(data) > 9:
+            raise ValueError(f"Board size cannot be larger than 9, you wrote {data}") 
+
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again. \n") 
+
+def validate_ships(size, num_ships):
+    """
+    Validates the number of ships data input before game begins 
+    """
+    try:
+        int(num_ships)
+        if int(num_ships) > (int(size)-3)*4:
+            raise ValueError(f"Too many ships, you wrote {num_ships} please choose a smaller number")
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again. \n") 
+
+get_data()
 
 class Board:
     """
@@ -47,15 +76,15 @@ class Board:
     # Print player board
     def build_player_board():
         player = Board(name, size, num_ships)
-        print(player.build_board())
-
+        player_board = [(player.build_board())]
+        for i in range(num_ships):
+            player_board.replace(Board.random_int(self.size), Board.random_int(self.size), " @ ")
+            print(computer_board)
+        
     # Print computer board
     def build_computer_board():
         computer = Board("Computer", size, num_ships)
-        computer_board = (computer.build_board())
-        for i in range(num_ships):
-            computer_board[Board.random_int(self.size)][Board.random_int(self.size)]= " @ "
-            print(computer_board)
+        print(computer.build_board())
    
 
 
@@ -63,4 +92,4 @@ def main():
     Board.build_player_board()
     Board.build_computer_board()
 
-main()
+# main()
