@@ -1,9 +1,8 @@
 from random import randint
 
-# funcion needed to validate inputs
 def get_data():
     """
-    Get parameters from player
+    Get parameters from player and feed into validation
     """
     print("Welcome to Battleships online game")
     name = input("Please enter your name: ")
@@ -20,7 +19,7 @@ def get_data():
         
 def validate_size(data):
     """
-    Validates the board size data input before game begins 
+    Validates the board size data input
     """
     try:
         int(data)
@@ -35,7 +34,7 @@ def validate_size(data):
 
 def validate_ships(size, num_ships):
     """
-    Validates the number of ships data input before game begins 
+    Validates the number of ships data input
     """
     try:
         int(num_ships)
@@ -46,6 +45,21 @@ def validate_ships(size, num_ships):
         return False
 
     return True
+
+def validate_guess(guess):
+    """
+    Validates the player guess input
+    """
+    try:
+        int(guess)
+        if int(guess)> int(size):
+            raise ValueError(f"Your guess was off the board, you wrote {size} please choose a number between 0 and {size}")
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again. \n") 
+        return False
+
+    return True
+
 
 class Board:
     """
@@ -96,11 +110,24 @@ class Board:
         computer = Board("Computer", size, num_ships)
         print(computer.build_board())
    
+def guess():
+    """
+    Prompts for player guess and feeds into validation
+    """
 
+    while True:
+        print('Input column and row guess such as "3,4" which is column 3, row 4')
+        guess = input("Input guess: ")
+        print(guess)
+
+        if validate_guess(guess):
+            break
 
 def main():
     get_data()
     # Board.build_player_board()
     # Board.build_computer_board()
 
-main()
+# main()
+
+guess()
