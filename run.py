@@ -7,11 +7,17 @@ def get_data():
     """
     print("Welcome to Battleships online game")
     name = input("Please enter your name: ")
-    size = input("Please enter the desired board size: ")
-    validate_size(size)
-    num_ships = input("Please enter the desired number of battleships: ")
-    validate_ships(size, num_ships)
 
+    while True:
+        size = input("Please enter the desired board size: ")
+        if validate_size(size):
+            break
+
+    while True:
+        num_ships = input("Please enter the desired number of battleships: ")
+        if validate_ships(size, num_ships):
+            break
+        
 def validate_size(data):
     """
     Validates the board size data input before game begins 
@@ -23,6 +29,9 @@ def validate_size(data):
 
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n") 
+        return False
+    
+    return True
 
 def validate_ships(size, num_ships):
     """
@@ -34,8 +43,9 @@ def validate_ships(size, num_ships):
             raise ValueError(f"Too many ships, you wrote {num_ships} please choose a smaller number")
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n") 
+        return False
 
-get_data()
+    return True
 
 class Board:
     """
@@ -89,7 +99,8 @@ class Board:
 
 
 def main():
-    Board.build_player_board()
-    Board.build_computer_board()
+    get_data()
+    # Board.build_player_board()
+    # Board.build_computer_board()
 
-# main()
+main()
