@@ -1,22 +1,6 @@
 from random import randint
+import random
 
-def get_data():
-    """
-    Get parameters from player and feed into validation
-    """
-    print("Welcome to Battleships online game")
-    name = input("Please enter your name: ")
-
-    while True:
-        size = input("Please enter the desired board size: ")
-        if validate_size(size):
-            break
-
-    while True:
-        num_ships = input("Please enter the desired number of battleships: ")
-        if validate_ships(size, num_ships):
-            break
-        
 def validate_size(data):
     """
     Validates the board size data input
@@ -69,34 +53,64 @@ class Board:
     Function to print the board for each round based on the information
     held in the class.
     """
-    def __init__(self, name, size, num_ships):
+    def __init__(self, name, size, num_ships, is_computer=False):
         self.name = name
         self.size = size
         self.num_ships = num_ships
+        self.is_computer = is_computer
+        self.grid = []
+        self.ships = []
+        self.guesses = []
 
-    # Creates random numbers used for ship placement
-    def random_int(self):
+    def add_ships(self):
         """
+        Takes randomly generated ship co-ords and appends them to the Board class
+        """
+        for i in range (0, int(self.num_ships)):
+            self.ships.append(make_ship(self))
+
+    def make_ship(self):
+        """
+        Takes the number of ships inputted from the player and generates
+        random numbers to locate the ship(s)
+        """
+        row =  random.randint(0, len(self.grid) -1)
+        col = random.randint(0, len(self.grid[0]) -1)
+
+        return [col, row]
+
+    """
+    def random_int(self):
         computer_ships = []
         for i in range (0, num_ships):
             computer_ships.append([randint(0, size-1)],[randint(0, size-1)])
         print(computer_ships)
-        """
         return randint (0, size-1)
+    """
 
-    # setting up blank board based on size input from player
+    
     def build_board(self):
-        blank_board = []
+    # Builds board based on class variables
+        for row in range(0, int(self.size)):
+            self.grid.append(["*"]* int(self.size))
+
+        self.add_ships()
+
+    def render_board(self):
+    # Render board to the terminal taking in ship position, misses and hits
         print(f"{self.name}'s board \n")
-        for i in range(self.size):
-            blank_board.append([])
-            for x in range(1, (self.size+1)):
-                blank_board[i].append(" * ")
-        for i in blank_board:
+
+        for i in self.grid:
             for j in i:
                 print(j, end = " ")
             print("\n")
+        
+        #remove this print later...
+        print("SHIPS")
+        for ship in self.ships:
+            print(ship)
 
+    """
     # Print player board
     def build_player_board():
         player = Board(name, size, num_ships)
@@ -109,8 +123,10 @@ class Board:
     def build_computer_board():
         computer = Board("Computer", size, num_ships)
         print(computer.build_board())
-   
-def guess():
+    """
+
+#should these two functions be in the board class?...
+def player_guess():
     """
     Prompts for player guess and feeds into validation
     """
@@ -123,11 +139,34 @@ def guess():
         if validate_guess(guess):
             break
 
+def computer_guess():
+    """
+    Generate random computer move for each round
+    """
+
 def main():
-    get_data()
-    # Board.build_player_board()
-    # Board.build_computer_board()
+    """
+    Get parameters from player and feed into validation
+    """
+    print("Welcome to Battleships online game")
+    name = input("Please enter your name: ")
 
-# main()
+    while True:
+        size = input("Please enter the desired board size: ")
+        if validate_size(size):
+            break
 
-guess()
+    while True:
+        num_ships = input("Please enter the desired number of battleships: ")
+        if validate_ships(size, num_ships):
+            break
+
+    player = Board(name, size, num_ships)
+    player.build_board()
+
+    computer = Board("Computer", size, num_ships, is_computer=True)
+    computer.build_board()
+
+main()
+
+# guess()
