@@ -66,8 +66,8 @@ class Board:
         Takes the number of ships inputted from the player and generates
         random numbers to locate the ship(s)
         """
-        row =  random.randint(0, len(self.size) -1)
-        col = random.randint(0, len(self.size[0]) -1)
+        row =  random.randint(0, (int(self.size)-1))
+        col = random.randint(0, (int(self.size)-1))
 
         return [col, row]
 
@@ -78,8 +78,6 @@ class Board:
         """
         for i in range (0, int(self.num_ships)):
             self.ships.append(self.make_ship())
-
-        print (self.ships)
 
     def build_board(self):
     # Builds board based on class variables
@@ -101,6 +99,7 @@ class Board:
         print("SHIPS")
         for ship in self.ships:
             print(ship)
+        print()
 
 #should these two functions be in the board class?...
 def player_guess():
