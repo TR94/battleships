@@ -105,18 +105,36 @@ class Board:
         print()
 
 #should these two functions be in the board class?...
-def player_guess():
-    """
-    Prompts for player guess and feeds into validation
-    """
+    def player_guess():
+        """
+        Prompts for player guess and feeds into validation
+        """
 
-    while True:
-        print('Input column and row guess such as "3,4" which is column 3, row 4')
-        guess = input("Input guess: ")
-        print(guess)
+        while True:
+            guess_row = input("Input row guess: ")
 
-        if validate_guess(guess):
-            break
+            if validate_guess(guess_row):
+                break
+
+        while True:
+            guess_col = input("Input column guess: ")
+
+            if validate_guess(guess_col):
+                break
+
+        return [guess_row, guess_col]
+
+    def check_shot():
+        """
+        Takes player guess, checks it hasn't already been guessed and 
+        compares against computer ships
+        Declares hit or miss
+        """
+
+        guess_row, guess_col = self.player_guess()
+        print(guess_row)
+        print(guess_col)
+
 
 def computer_guess():
     """
@@ -147,6 +165,12 @@ def main():
     computer = Board("Computer", size, num_ships, is_computer=True)
     computer.build_board()
     computer.render_board()
+
+    Board.check_shot()
+
+
+
+
 
 main()
 
