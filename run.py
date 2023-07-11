@@ -77,7 +77,9 @@ class Board:
         and appends them to the ships list in the Board class
         """
         for i in range (0, int(self.num_ships)):
-            self.ships.append(self.make_ship())
+            row, col = self.make_ship()
+            self.ships.append(str(row)+", "+str(col))
+            self.grid[row][col] = " @ "
 
     def build_board(self):
     # Builds board based on class variables
