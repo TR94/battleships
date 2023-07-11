@@ -44,7 +44,6 @@ def validate_guess(guess):
 
     return True
 
-
 class Board:
     """
     Class to hold the details relevant to setting a game board.
@@ -62,37 +61,30 @@ class Board:
         self.ships = []
         self.guesses = []
 
-    def add_ships(self):
-        """
-        Takes randomly generated ship co-ords and appends them to the Board class
-        """
-        for i in range (0, int(self.num_ships)):
-            self.ships.append(make_ship(self))
-
     def make_ship(self):
         """
         Takes the number of ships inputted from the player and generates
         random numbers to locate the ship(s)
         """
-        row =  random.randint(0, len(self.grid) -1)
-        col = random.randint(0, len(self.grid[0]) -1)
+        row =  random.randint(0, len(self.size) -1)
+        col = random.randint(0, len(self.size[0]) -1)
 
         return [col, row]
 
-    """
-    def random_int(self):
-        computer_ships = []
-        for i in range (0, num_ships):
-            computer_ships.append([randint(0, size-1)],[randint(0, size-1)])
-        print(computer_ships)
-        return randint (0, size-1)
-    """
+    def add_ships(self):
+        """
+        Takes the number of ships inputted from the player and random generated ship co-ords 
+        and appends them to the ships list in the Board class
+        """
+        for i in range (0, int(self.num_ships)):
+            self.ships.append(self.make_ship())
 
-    
+        print (self.ships)
+
     def build_board(self):
     # Builds board based on class variables
         for row in range(0, int(self.size)):
-            self.grid.append(["*"]* int(self.size))
+            self.grid.append([" * "]* int(self.size))
 
         self.add_ships()
 
@@ -109,21 +101,6 @@ class Board:
         print("SHIPS")
         for ship in self.ships:
             print(ship)
-
-    """
-    # Print player board
-    def build_player_board():
-        player = Board(name, size, num_ships)
-        player_board = [(player.build_board())]
-        for i in range(num_ships):
-            player_board.replace(Board.random_int(self.size), Board.random_int(self.size), " @ ")
-            print(computer_board)
-        
-    # Print computer board
-    def build_computer_board():
-        computer = Board("Computer", size, num_ships)
-        print(computer.build_board())
-    """
 
 #should these two functions be in the board class?...
 def player_guess():
@@ -163,9 +140,11 @@ def main():
 
     player = Board(name, size, num_ships)
     player.build_board()
+    player.render_board()
 
     computer = Board("Computer", size, num_ships, is_computer=True)
     computer.build_board()
+    computer.render_board()
 
 main()
 
