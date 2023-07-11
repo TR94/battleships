@@ -79,7 +79,8 @@ class Board:
         for i in range (0, int(self.num_ships)):
             row, col = self.make_ship()
             self.ships.append(str(row)+", "+str(col))
-            self.grid[row][col] = " @ "
+            if self.is_computer == False:
+                self.grid[row][col] = " @ "
 
     def build_board(self):
     # Builds board based on class variables
