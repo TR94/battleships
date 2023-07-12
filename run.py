@@ -30,14 +30,14 @@ def validate_ships(size, num_ships):
 
     return True
 
-def validate_guess(guess):
+def validate_guess(guess, size):
     """
     Validates the player guess input
     """
     try:
         int(guess)
-        if int(guess)> int(size):
-            raise ValueError(f"Your guess was off the board, you wrote {size} please choose a number between 0 and {size}")
+        if int(guess)> (int(size)-1):
+            raise ValueError(f"Your guess was off the board, you wrote {guess} please choose a number between 0 and ({size}-1)")
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n") 
         return False
@@ -104,8 +104,7 @@ class Board:
             print(ship)
         print()
 
-#should these two functions be in the board class?...
-    def player_guess():
+    def player_guess(self):
         """
         Prompts for player guess and feeds into validation
         """
@@ -113,28 +112,47 @@ class Board:
         while True:
             guess_row = input("Input row guess: ")
 
-            if validate_guess(guess_row):
+            if validate_guess(guess_row, self.size):
                 break
 
         while True:
             guess_col = input("Input column guess: ")
 
-            if validate_guess(guess_col):
+            if validate_guess(guess_col, self.size):
                 break
 
         return [guess_row, guess_col]
 
-    def check_shot():
+    def check_shot(self):
         """
         Takes player guess, checks it hasn't already been guessed and 
         compares against computer ships
         Declares hit or miss
         """
+        guessed = 0
+        hit = 0
 
         guess_row, guess_col = self.player_guess()
-        print(guess_row)
-        print(guess_col)
+        player_guess = guess_row + ", " + guess_col
+        #checks the guess hasn't been made already
+        for guess in self.guesses:
+            if player_guess == guess:
+                guessed = 1
+        
+        if guessed == 1:
+            print(f"{player_guess} has already been guessed, try again")
+            #need a loop to make another guess
+        else:
+            self.guesses.append(player_guess)
+            #how to I make this for player only...?
+        
+        #checks if the guess is a hit or not
+        for ship in self.ships:
+            if ship == player_guess:
+                hit = 1
 
+        if hit == 1:
+            print(f"Battleship hit!")
 
 def computer_guess():
     """
@@ -165,8 +183,9 @@ def main():
     computer = Board("Computer", size, num_ships, is_computer=True)
     computer.build_board()
     computer.render_board()
-
     player.check_shot()
+
+    print(player.guesses)
 
 
 
