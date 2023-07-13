@@ -92,12 +92,6 @@ class Board:
             for j in i:
                 print(j, end = " ")
             print("\n")
-        
-        #remove this print later...
-        print("SHIPS")
-        for ship in self.ships:
-            print(ship)
-        print()
 
     def player_guess(self):
         """
@@ -179,7 +173,6 @@ class Board:
 
             guess_row, guess_col = self.computer_guess()
             computer_guess = str(guess_row) + ", " + str(guess_col)
-            print(computer_guess)
 
             #checks the guess hasn't been made already
             for guess in self.guesses:
@@ -193,8 +186,6 @@ class Board:
                 self.guesses.append(computer_guess)
             
             #checks if the guess is a hit or not and updates board
-            print(player.ships)
-            print(self.guesses)
             print("Computer result: ")
             
             for ship in player.ships:
@@ -242,6 +233,7 @@ def main():
     print(f"Computer sunk {computer.score} of {computer.num_ships} battleships\n")
 
     while computer.score or player.score < int(player.num_ships):
+        #validate this input 
         play = input("Continue to next round? y / n? \n")
         if play == "y":
             print ("-"*20)
