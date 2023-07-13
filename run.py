@@ -109,7 +109,8 @@ class Board:
         """
         Prompts for player guess and feeds into validation
         """
-
+        #check this as doesn't prompt a new guess at the moment
+        #check computer one as well 
         while True:
             guess_row = input("Input row guess: ")
 
@@ -156,12 +157,12 @@ class Board:
         print("Player result: ")
 
         if hit == 1:
-            print("*** Battleship hit! ***\n")
+            print("*** HIT ***\n")
             computer.grid[int(guess_row)][int(guess_col)] = " X "
             self.score +=1
 
         else:
-            print("*** You missed! ***\n")
+            print("*** MISS ***\n")
             computer.grid[int(guess_row)][int(guess_col)] = " O "
 
 
@@ -183,7 +184,10 @@ class Board:
             """
             guessed = 0
             hit = 0
-            computer_guess = self.computer_guess()
+
+            guess_row, guess_col = self.computer_guess()
+            computer_guess = str(guess_row) + ", " + str(guess_col)
+            print(computer_guess)
 
             #checks the guess hasn't been made already
             for guess in self.guesses:
@@ -191,26 +195,28 @@ class Board:
                     guessed = 1
             
             if guessed == 1:
-                check_computer_shot()
-                #need a loop to make another guess
+                self.check_computer_shot()
+        
             else:
                 self.guesses.append(computer_guess)
             
             #checks if the guess is a hit or not and updates board
+            print(player.ships)
+            print(self.guesses)
+            print("Computer result: ")
+            
             for ship in player.ships:
                 if ship == computer_guess:
                     hit = 1
 
-            print("Computer result: ")
-
             if hit == 1:
-                print("*** Battleship hit! ***\n")
-                player.grid[int(computer_guess[0])][int(computer_guess[1])] = " X "
+                print("*** HIT ***\n")
+                player.grid[int(guess_row)][int(guess_col)] = " X "
                 self.score +=1
 
             else:
-                print("*** You missed! ***\n")
-                player.grid[int(computer_guess[0])][int(computer_guess[1])] = " O "
+                print("*** MISS ***\n")
+                player.grid[int(guess_row)][int(guess_col)] = " O "
 
 def main():
     """
@@ -242,6 +248,7 @@ def main():
     #need loop in here for the game to keep going
     player.check_player_shot()
     computer.check_computer_shot()
+    print("Scores after this round:")
     print(f"Player sunk {player.score} out of {player.num_ships} battleships\n")
     print(f"Computer sunk {computer.score} of {computer.num_ships} battleships\n")
 
