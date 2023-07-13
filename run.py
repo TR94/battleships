@@ -60,6 +60,7 @@ class Board:
         self.grid = []
         self.ships = []
         self.guesses = []
+        self.score = 0
 
     def make_ship(self):
         """
@@ -157,6 +158,7 @@ class Board:
         if hit == 1:
             print("*** Battleship hit! ***\n")
             computer.grid[int(guess_row)][int(guess_col)] = " X "
+            self.score +=1
 
         else:
             print("*** You missed! ***\n")
@@ -204,6 +206,7 @@ class Board:
             if hit == 1:
                 print("*** Battleship hit! ***\n")
                 player.grid[int(computer_guess[0])][int(computer_guess[1])] = " X "
+                self.score +=1
 
             else:
                 print("*** You missed! ***\n")
@@ -239,6 +242,10 @@ def main():
     #need loop in here for the game to keep going
     player.check_player_shot()
     computer.check_computer_shot()
+    print(f"Player sunk {player.score} out of {player.num_ships} battleships\n")
+    print(f"Computer sunk {computer.score} of {computer.num_ships} battleships\n")
+
+
     print ("-"*20)
     print()
     player.render_board()
