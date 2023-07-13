@@ -124,7 +124,7 @@ class Board:
 
         return [guess_row, guess_col]
 
-    def check_shot(self):
+    def check_player_shot(self):
         """
         Takes player guess, checks it hasn't already been guessed and 
         compares against computer ships
@@ -147,10 +147,12 @@ class Board:
         else:
             self.guesses.append(player_guess)
         
-        #checks if the guess is a hit or not
+        #checks if the guess is a hit or not and updates board
         for ship in computer.ships:
             if ship == player_guess:
                 hit = 1
+
+        print("Player result: ")
 
         if hit == 1:
             print("*** Battleship hit! ***\n")
@@ -160,12 +162,52 @@ class Board:
             print("*** You missed! ***\n")
             computer.grid[int(guess_row)][int(guess_col)] = " O "
 
-        #needs to update grid list with hit or miss 
 
-def computer_guess():
-    """
-    Generate random computer move for each round
-    """
+    def computer_guess(self):
+        """
+        Generate random computer move for each round
+        """
+        row =  random.randint(0, (int(self.size)-1))
+        col = random.randint(0, (int(self.size)-1))
+
+        return [col, row]
+
+
+    def check_computer_shot(self):
+            """
+            Takes computer guess, checks it hasn't already been guessed and 
+            compares against player ships
+            Declares hit or miss
+            """
+            guessed = 0
+            hit = 0
+            computer_guess = self.computer_guess()
+
+            #checks the guess hasn't been made already
+            for guess in self.guesses:
+                if computer_guess == guess:
+                    guessed = 1
+            
+            if guessed == 1:
+                check_computer_shot()
+                #need a loop to make another guess
+            else:
+                self.guesses.append(computer_guess)
+            
+            #checks if the guess is a hit or not and updates board
+            for ship in player.ships:
+                if ship == computer_guess:
+                    hit = 1
+
+            print("Computer result: ")
+
+            if hit == 1:
+                print("*** Battleship hit! ***\n")
+                player.grid[int(computer_guess[0])][int(computer_guess[1])] = " X "
+
+            else:
+                print("*** You missed! ***\n")
+                player.grid[int(computer_guess[0])][int(computer_guess[1])] = " O "
 
 def main():
     """
@@ -195,7 +237,8 @@ def main():
     computer.render_board()
     
     #need loop in here for the game to keep going
-    player.check_shot()
+    player.check_player_shot()
+    computer.check_computer_shot()
     print ("-"*20)
     print()
     player.render_board()
