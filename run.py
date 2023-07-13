@@ -2,9 +2,7 @@ from random import randint
 import random
 
 def validate_size(data):
-    """
-    Validates the board size data input
-    """
+    # Validates the board size data input
     try:
         int(data)
         if int(data) > 9:
@@ -17,9 +15,7 @@ def validate_size(data):
     return True
 
 def validate_ships(size, num_ships):
-    """
-    Validates the number of ships data input
-    """
+    # Validates the number of ships data input
     try:
         int(num_ships)
         if int(num_ships) > (int(size)-3)*4:
@@ -31,9 +27,7 @@ def validate_ships(size, num_ships):
     return True
 
 def validate_guess(guess, size):
-    """
-    Validates the player guess input
-    """
+    # Validates the player guess input
     try:
         int(guess)
         if int(guess)> (int(size)-1):
@@ -167,9 +161,7 @@ class Board:
 
 
     def computer_guess(self):
-        """
-        Generate random computer move for each round
-        """
+        # Generate random computer move for each round
         row =  random.randint(0, (int(self.size)-1))
         col = random.randint(0, (int(self.size)-1))
 
@@ -219,9 +211,7 @@ class Board:
                 player.grid[int(guess_row)][int(guess_col)] = " O "
 
 def main():
-    """
-    Get parameters from player and feed into validation
-    """
+    # Get parameters from player and feed into validation
     print("Welcome to Battleships online game")
     name = input("Please enter your name: ")
 
@@ -245,7 +235,6 @@ def main():
     computer.build_board()
     computer.render_board()
     
-    #need loop in here for the game to keep going
     player.check_player_shot()
     computer.check_computer_shot()
     print("Scores after this round:")
@@ -267,7 +256,11 @@ def main():
         else:
             print("Game ended")
             quit()
-            break
-
+    else:
+        if computer.score == int(player.num_ships):
+            print("***  Computer wins!!!  ***")
+        else:
+            print(f"***  {player.name} wins!!  ***")
+        
 main()
 
