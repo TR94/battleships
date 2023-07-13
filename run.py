@@ -117,6 +117,7 @@ class Board:
 
         while True:
             guess_col = input("Input column guess: ")
+            print()
 
             if validate_guess(guess_col, self.size):
                 break
@@ -134,18 +135,17 @@ class Board:
 
         guess_row, guess_col = self.player_guess()
         player_guess = guess_row + ", " + guess_col
-        print(player_guess)
+
         #checks the guess hasn't been made already
-        for guess in self.player.guesses:
+        for guess in self.guesses:
             if player_guess == guess:
                 guessed = 1
         
         if guessed == 1:
-            print(f"{player_guess} has already been guessed, try again")
+            print(f"{player_guess} has already been guessed, try again \n")
             #need a loop to make another guess
         else:
             self.guesses.append(player_guess)
-            #how to I make this for player only...?
         
         #checks if the guess is a hit or not
         for ship in self.ships:
@@ -153,10 +153,10 @@ class Board:
                 hit = 1
 
         if hit == 1:
-            print("Battleship hit!")
+            print("Battleship hit! \n")
             computer.grid.append[guess_row][guess_col] = "X"
         else:
-            print("You missed!")
+            print("You missed! \n")
             computer.grid.append[guess_row][guess_col] = "O"
 
         #needs to update grid list with hit or miss 
