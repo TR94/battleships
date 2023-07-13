@@ -135,9 +135,6 @@ class Board:
 
         guess_row, guess_col = self.player_guess()
         player_guess = guess_row + ", " + guess_col
-        # guess_array = (int(guess_row) * int(self.size))+ int(guess_col)
-        # print (guess_array)
-        print(computer.grid)
 
         #checks the guess hasn't been made already
         for guess in self.guesses:
@@ -151,18 +148,17 @@ class Board:
             self.guesses.append(player_guess)
         
         #checks if the guess is a hit or not
-        for ship in self.ships:
+        for ship in computer.ships:
             if ship == player_guess:
                 hit = 1
 
         if hit == 1:
-            print("Battleship hit! \n")
+            print("*** Battleship hit! ***\n")
             computer.grid[int(guess_row)][int(guess_col)] = " X "
-            print(computer.grid)
+
         else:
-            print("You missed! \n")
+            print("*** You missed! ***\n")
             computer.grid[int(guess_row)][int(guess_col)] = " O "
-            print(computer.grid)
 
         #needs to update grid list with hit or miss 
 
@@ -197,11 +193,14 @@ def main():
     computer = Board("Computer", size, num_ships, is_computer=True)
     computer.build_board()
     computer.render_board()
-
-    print(computer.ships)
     
     #need loop in here for the game to keep going
     player.check_shot()
+    print ("-"*20)
+    print()
+    player.render_board()
+    computer.render_board()
+    
 
     #needs way to end the game
 
