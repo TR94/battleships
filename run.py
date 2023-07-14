@@ -242,9 +242,13 @@ def main():
     print(f"Computer sunk {computer.score} of {computer.num_ships} battleships\n")
 
     while computer.score or player.score < int(player.num_ships):
-        #validate this input 
-        play = input("Continue to next round? y / n? \n")
-        if play == "y":
+
+        play = input("Press any key to continue or 'q' to quit\n")
+        if play == "q":
+            print("Game ended")
+            quit()
+            
+        else:
             print ("-"*20)
             print()
             player.render_board()
@@ -254,9 +258,6 @@ def main():
             computer.check_computer_shot()
             print(f"Player sunk {player.score} out of {player.num_ships} battleships\n")
             print(f"Computer sunk {computer.score} of {computer.num_ships} battleships\n")
-        else:
-            print("Game ended")
-            quit()
     else:
         if computer.score == int(player.num_ships):
             print("***  Computer wins!!!  ***")
