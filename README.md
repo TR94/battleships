@@ -89,14 +89,20 @@ Input validation:
 - The inputs must be an integer and within the size of the board. Anything else will return an error.
 - As the game continues through subsequent rounds, all guesses are stored and if a player accidently makes the same guess twice an error message will be displayed along with another chance to make a guess.
 
-
 ## Round results
+The results for the round are declared based on the player input, randomised computer guess and ship positions. The result is either a hit or a miss. The scores are also displayed with a hit gaining a point. The message will display how many battleships are left to hit for the player and the computer. 
 
-## Next round
+![Battleships round results](/assets/readMe_images/game_results.png)
 
 ## Quit game
+At the end of each round, the player has the opportunity to quit the game. Inputting 'q' will quit the game whilst any other key will continue. 
 
+![Battleships quit game]()
 
+## Next round
+Once the player has confirmed to continue the game, the boards will be reprinted showing the hits and misses from previous rounds. The game will loop back to the player guess and the game will continue.
+
+![Battelships next round](/assets/readMe_images/game_rd2.png)
 
 # Technologies used:
 ## Coding languages used: 
