@@ -97,7 +97,7 @@ The results for the round are declared based on the player input, randomised com
 ## Quit game
 At the end of each round, the player has the opportunity to quit the game. Inputting 'q' will quit the game whilst any other key will continue. 
 
-![Battleships quit game]()
+![Battleships quit game](/assets/readMe_images/game_quit.png)
 
 ## Next round
 Once the player has confirmed to continue the game, the boards will be reprinted showing the hits and misses from previous rounds. The game will loop back to the player guess and the game will continue.
