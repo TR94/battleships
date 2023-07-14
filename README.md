@@ -124,10 +124,25 @@ Heroku is used to deploy the programme in the form of an app. This is supported 
 Accessibility wasn’t considered for backend Python programming 
 
 # Testing
-[Refer to feedback from last assignment]
+The testing phase allows the code to be stressed before it is released. Carrying out thorough testing before release reduces problems with the code ensuring it is robust and delivers the expected user experience. 
 
 ## User Goals
-The user goals were set-up at the start of development during the Strategy phase and reviewed again during the Skeleton phase. The content requirements have been reviewed against the finished website: 
+The user goals were set at the start of development during the Strategy phase. These are reviewed against the finished code to ensure it achieves the desired outcomes:
+- Player can choose the board size for the game:
+    - Input at the start of the game allows a board size between 4 and 9.
+    - Validation within the code ensures the correct input is given.
+- Player can choose the number of ships within the game:
+    - Input at the start of the game allows the number of ships to be chosen.
+    - Validation within the code ensures a sensible input is accepted. There isn't any specific guidance to the player on this but the validation. will return feedback on a smaller or larger number.
+- An input area for the player to interact with:
+    - For each round the player chooses the row and column they want to guess
+    - Validation within the code ensure this guess is within the confines of the board and hasn't been guessed in a previous round.
+    - The player has the option to continue or quit the game after each round. 
+- A game board that tracks the hits and misses throughout the rounds:
+    - After each round the boards are printed showing hits and misses.
+- A score tracker:
+    - After each round the results are printed to show a hit or miss for the player and the computer. 
+    - The number of battleships left to sink is fedback after each round.
 
 ## Manual Testing
 ### Functionality testing:
