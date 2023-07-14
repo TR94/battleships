@@ -146,8 +146,101 @@ The user goals were set at the start of development during the Strategy phase. T
 
 ## Manual Testing
 ### Functionality testing:
+#### Page loading:
+- Expected: Page should load in the terminal with no errors
+- Testing:
+- Result:
+- Fix:
+
+#### Start game inputs:
+- Expected: Inputs for "name", "board size" and "number of ships" are carried into the game
+- Testing:
+- Result:
+- Fix:
+
+- Expected: "board size" input is validated within the given range of 4-9
+- Testing:
+- Result:
+- Fix:
+
+- Expected: "number of ships input is validated within a sensible range
+- Testing:
+- Result:
+- Fix:
+
+#### First round board
+- Expected: player and computer boards are printed. Player board shows ships and computer board doesn't show ships
+- Testing:
+- Result:
+- Fix:
+
+- Expected: player board shows the correct number of ships as inputted at the start of the game
+- Testing:
+- Result:
+- Fix:
+
+#### Guess input
+- Expected: Instructions are given on how to located a guess on the board
+- Testing:
+- Result:
+- Fix:
+
+- Expected: Inputs for row and column are validated to be within the game board
+- Testing:
+- Result:
+- Fix:
+
+- Expected: Result of the round is communicated 
+- Testing:
+- Result:
+- Fix:
+
+- Expected: Inputted guess is printed correctly onto the computer board and indicates a hit or miss correctly
+- Testing:
+- Result:
+- Fix:
+
+#### Game continue or quit
+- Expected: Instructions are provided on how to continue or quit the game
+- Testing:
+- Result:
+- Fix:
+
+- Expected: Submitting "q" ends the game
+- Testing:
+- Result:
+- Fix:
+
+- Expected: Submitting any key (other than "q" continues the game)
+- Testing:
+- Result:
+- Fix:
+
+#### Next round 
+- Expected: Boards are updated correctly and print for next round
+- Testing:
+- Result:
+- Fix:
+
+- Expected: A repeated guess from a previous round is rejected and asks to try again 
+- Testing:
+- Result:
+- Fix:
+
+- Expected: Score is updated when a hit occurs with feedback to the player
+- Testing:
+- Result:
+- Fix:
+
+#### Winner
+
+- Expected: The game ends when either the player's or computer's ships are sunk and declares a winner
+- Testing:
+- Result:
+- Fix:
 
 ### Responsiveness 
+Responsiveness within the webpage isn't a consideration for this backend programme. 
 
 ### Code Validation
 
