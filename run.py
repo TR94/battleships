@@ -19,9 +19,10 @@ def validate_size(data):
 def validate_ships(size, num_ships):
     # Validates the number of ships data input
     try:
-        int(num_ships)
         if int(num_ships) > (int(size)-3)*4:
-            raise ValueError(f"Too many ships, you wrote {num_ships} please choose a smaller number")
+            raise ValueError(f"Too many ships, you wrote {num_ships}. Please choose a smaller number")
+        if int(num_ships < 4):
+            raise ValueError(f"Too few ships, you wrote {num_ships}. Please choose a number larger than 3")
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n") 
         return False
@@ -139,7 +140,7 @@ class Board:
         
         if guessed == 1:
             print(f"{player_guess} has already been guessed, try again \n")
-            #need a loop to make another guess
+            self.check_player_shot()
         else:
             self.guesses.append(player_guess)
         
