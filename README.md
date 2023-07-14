@@ -22,7 +22,7 @@ The 5 development planes have been considered to ensure the game is developed in
 ## Strategy
 This programme is purely for fans of the Battleships game and therefore has no commercial drivers. With this in mind the only strategic requirements for this programme are to ensure the user has an authentic Battleships experience which:
 - is against a fair opponent 
-- provides feedback on the game play 
+- is interactive and provides feedback on the game play 
 - follows the rules accurately 
 
 ## Scope
@@ -32,14 +32,13 @@ Based on the user experience and strategy above, the content requirements are:
 - Player can choose the board size for the game
 - Player can choose the number of ships within the game 
 - An input area for the player to interact with
-- Feedback on the status of the game after each round 
-
+- A game board that tracks the hits and misses throughout the rounds
+- A score tracker 
 
 ## Structure
-The structure of the Python code has been considered as a flowchart to draft out how the programme will work. At this stage it highlights how to game will flow and allows consideration for the inputs, output and validation required. See below for the flowchart.
+The structure of the Python code has been considered as a flowchart to draft out how the programme will work. At this stage it highlights how to game will flow and allows consideration for the inputs, outputs and validation required. This doesn't cover the details of classes, methods and functions but does help tp understand the logic flow required. See below for the flowchart.
 
 ![Battleships game flow chart](/assets/readMe_images/Battleships_Flowchart.png)
-
 
 ## Skeleton
 Wire-framing at this stage allows the page(s) to be designed and altered freely without committing anything to code. For this project, the game is being played in the terminal and therefore the structural design is very limited. 
@@ -50,8 +49,8 @@ Below are the wireframes for the start of the game and each round.
 At the start of the game the player needs to input some information and then the first round of boards will be printed. During each round the player will make their guess, computer will randomise a guess and the results will be displayed with updated boards.
 
 ## Surface:
-With the game being played in the terminal, there is very little visual design features that can be incorporated into the game. For the boards there are several indications which are needed:
-- grid location
+With the game being played in the terminal, there are very little visual design features that can be incorporated into the game. For the boards there are several indications which are needed:
+* - individual grid location
 @ - ship, visual location of the ship, only used on the player board 
 X - hit, ship that has been hit 
 O - miss, grid location that didn’t hit a ship
@@ -59,6 +58,45 @@ O - miss, grid location that didn’t hit a ship
 Colour, font, image and icons are not available to style within the Python terminal. 
 
 # Features: 
+## Game start
+The game starts with a welcome message and the chance for the player to input the following details:
+- Player name
+- Board size
+- Number of ships 
+
+These inputs are validated within the code meaning the player will be prompted for a second input if the first is not acceptable. The limits for the inputs are explained at the point of data entry. 
+
+![Battleships game start](/assets/readMe_images/game_start.png)
+
+Input validation:
+- The player name input is free text, there is no validation.
+
+- The board size has a limit between 4-9. A number outside of the range will give the player feedback and a chance to try again. A string rather than an integer will also trigger an error. 
+
+- The number of ships has similar validation logic to "board size" above. 
+
+## Game boards - start
+Once the player has input the parameters for the game, the boards are printed. The randomised ships are printed on the player board showing their location however they are not printed on the computer board. The player board is customised with the player's name from the input at the start of the game. 
+
+![Battleships board start](/assets/readMe_images/game_rd1.png)
+
+## Player guess 
+With the randomised ships logged and the boards printed the game can begin. The player has the chance to input their guess in the form of a row guess and column guess. This corresponds to the board with instructions explaining how to guess the co-ordinate they want. 
+
+![Battleships player guess](/assets/readMe_images/game_input.png)
+
+Input validation:
+- The inputs must be an integer and within the size of the board. Anything else will return an error.
+- As the game continues through subsequent rounds, all guesses are stored and if a player accidently makes the same guess twice an error message will be displayed along with another chance to make a guess.
+
+
+## Round results
+
+## Next round
+
+## Quit game
+
+
 
 # Technologies used:
 ## Coding languages used: 
@@ -76,7 +114,7 @@ Git-Hub / GitPod:
 Git-hub is used to store the project files and is used to host the site. GitPod was used as the IDE to code the website.
 
 Heroku:
-[Deployed] 
+Heroku is used to deploy the programme in the form of an app. This is supported by the Code Institute template that allows a python terminal to be run using a web page. 
 
 # Accessibility: 
 Accessibility wasn’t considered for backend Python programming 

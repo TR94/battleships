@@ -223,6 +223,7 @@ def main():
     while True:
         print()
         num_ships = input("Please enter the desired number of battleships: ")
+        print()
         if validate_ships(size, num_ships):
             break
 
