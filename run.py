@@ -7,8 +7,8 @@ def validate_size(data):
         int(data)
         if int(data) > 9:
             raise ValueError(f"Board size cannot be larger than 9, you wrote {data}")
-        if int(data) < 3:
-            raise ValueError(f"Board size cannot be smaller than 3, you wrote {data}")
+        if int(data) < 4:
+            raise ValueError(f"Board size cannot be smaller than 4, you wrote {data}")
 
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n") 
@@ -101,6 +101,10 @@ class Board:
         """
         #check this as doesn't prompt a new guess at the moment
         #check computer one as well 
+        print("Row = left to right.") 
+        print("Column = top to bottom.") 
+        print("Top left corner is 0, 0\n")
+
         while True:
             guess_row = input("Input row guess: ")
 
@@ -207,13 +211,16 @@ def main():
     # Get parameters from player and feed into validation
     print("Welcome to Battleships online game")
     name = input("Please enter your name: ")
+    print()
 
     while True:
+        print("Board size available from 4-9")
         size = input("Please enter the desired board size: ")
         if validate_size(size):
             break
 
     while True:
+        print()
         num_ships = input("Please enter the desired number of battleships: ")
         if validate_ships(size, num_ships):
             break
