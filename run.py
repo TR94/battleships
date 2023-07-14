@@ -21,8 +21,8 @@ def validate_ships(size, num_ships):
     try:
         if int(num_ships) > (int(size)-3)*4:
             raise ValueError(f"Too many ships, you wrote {num_ships}. Please choose a smaller number")
-        if int(num_ships < 4):
-            raise ValueError(f"Too few ships, you wrote {num_ships}. Please choose a number larger than 3")
+        if int(num_ships) < 1:
+            raise ValueError(f"Too few ships, you wrote {num_ships}. Please choose at least 1 ship")
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n") 
         return False
@@ -261,9 +261,9 @@ def main():
             print(f"Computer sunk {computer.score} of {computer.num_ships} battleships\n")
     else:
         if computer.score == int(player.num_ships):
-            print("***  Computer wins!!!  ***")
+            print("***  Computer wins!!!  ***\n")
         else:
-            print(f"***  {player.name} wins!!  ***")
+            print(f"***  {player.name} wins!!  ***\n")
         
 main()
 
