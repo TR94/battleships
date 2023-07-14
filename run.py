@@ -6,7 +6,9 @@ def validate_size(data):
     try:
         int(data)
         if int(data) > 9:
-            raise ValueError(f"Board size cannot be larger than 9, you wrote {data}") 
+            raise ValueError(f"Board size cannot be larger than 9, you wrote {data}")
+        if int(data) < 3:
+            raise ValueError(f"Board size cannot be smaller than 3, you wrote {data}")
 
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n") 
