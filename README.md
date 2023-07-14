@@ -4,10 +4,9 @@ This game mimics the classic Battleships game and allows players to interact thr
 
 This programme has been made to complete the third project within the Code Institute Full Stack Developer course and focuses on the use of the Python language. It is run on a Code Institute template that allows the terminal to be run in a webpage for viewing. 
 
-Link to live project: ...Heroku
+Link to live project: [This is an external link to Heroku](https:...)
 
 # User Experience
-
 The target audience for this site are fans of the classic Battleships game. This programme will allow them to play the game against a randomised computer output with some customisable features such as board size and number of ships. 
 
 The user goals for new and returning users are the same:
@@ -16,7 +15,6 @@ The user goals for new and returning users are the same:
 - As a user, I want the game to be fair so I don’t feel cheated 
 
 # Development Planes
-
 The 5 development planes have been considered to ensure the game is developed in a structure manner. Working through each plane in turn ensures the key foundations are considered and agreed before progressing too far. Working methodically in this way should result in the initial release being much closer to the final desired output.  
 
 ## Strategy
@@ -107,7 +105,6 @@ Once the player has confirmed to continue the game, the boards will be reprinted
 The only coding laugauge used in this project was Python3.
 
 ## External resources: 
-
 Balsamiq:
 Simple wireframing software used to mock up how the user interface will look
 
@@ -121,7 +118,7 @@ Heroku:
 Heroku is used to deploy the programme in the form of an app. This is supported by the Code Institute template that allows a python terminal to be run using a web page. 
 
 # Accessibility: 
-Accessibility wasn’t considered for backend Python programming 
+Accessibility isn't a consideration for backend Python programming, it would be addressed during the front end interaction development if required. 
 
 # Testing
 The testing phase allows the code to be stressed before it is released. Carrying out thorough testing before release reduces problems with the code ensuring it is robust and delivers the expected user experience. 
@@ -233,7 +230,6 @@ The user goals were set at the start of development during the Strategy phase. T
 - Fix:
 
 #### Winner
-
 - Expected: The game ends when either the player's or computer's ships are sunk and declares a winner
 - Testing:
 - Result:
@@ -243,8 +239,7 @@ The user goals were set at the start of development during the Strategy phase. T
 Responsiveness within the webpage isn't a consideration for this backend programme. 
 
 ### Code Validation
-
-PEP8 
+PEP8 - code institute 
 
 # Bugs
 Random ship placement:
@@ -279,7 +274,8 @@ The following steps were taken to deploy using Heroku:
 This provides a web app that allows the Python code to be run on a web browser. 
 
 # Credits 
-
 [refer to feedback from last assignment on this]
 
 ## Acknowledgements:
+Thank you to the tutor support at Code Institute for their guidance on various coding problems on this project.
+
