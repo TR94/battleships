@@ -50,10 +50,10 @@ At the start of the game the player needs to input some information and then the
 
 ## Surface:
 With the game being played in the terminal, there are very little visual design features that can be incorporated into the game. For the boards there are several indications which are needed:
-* - individual grid location
-@ - ship, visual location of the ship, only used on the player board 
-X - hit, ship that has been hit 
-O - miss, grid location that didn’t hit a ship
+- "*"  individual grid location
+- "@"  ship, visual location of the ship, only used on the player board 
+- "X"  hit, ship that has been hit 
+- "O"  miss, grid location that didn’t hit a ship
 
 Colour, font, image and icons are not available to style within the Python terminal. 
 
@@ -70,9 +70,7 @@ These inputs are validated within the code meaning the player will be prompted f
 
 Input validation:
 - The player name input is free text, there is no validation.
-
 - The board size has a limit between 4-9. A number outside of the range will give the player feedback and a chance to try again. A string rather than an integer will also trigger an error. 
-
 - The number of ships has similar validation logic to "board size" above. 
 
 ## Game boards - start
@@ -142,6 +140,7 @@ PEP8
 
 # Bugs
 Random ship placement:
+
 The random generation of ship locations was not working correctly which resulted in all the ships having the same [0, 0] co-ordinate. 
 
 ![Random generate ships bug](/assets/readMe_images/Random_generate_ships_bug.png)
@@ -156,8 +155,20 @@ random.randint(0, (int(self.size)-1))
 
 
 # Deployment
+To deploy a backend programme such as this one, Heroku has been used. A pure python programme is run in the terminal however using the Code Institute template this programme can be run in a mock terminal through a web based browser. 
 
+The following steps were taken to deploy using Heroku:
+- Due to a quirk with the mock terminal, each input requires a "\n" for it to work 
+- A list of requirements is required to document the dependencies for the programme. This is created using the command "pip3 freeze > requirements.txt". Heroku will use these when building the app. 
+- Within Heroku, a new app is created with a unqiue name. 
+- The following settings are used:
+    - Config vars: KEY = PORT, VALUE = 8000.
+- The following build packs are used (in this order):
+    - Python
+    - Node JS
+- Within deploy, the app is connected to the GitHub repository for Battleships and manually deployed using the required branch. 
 
+This provides a web app that allows the Python code to be run on a web browser. 
 
 # Credits 
 

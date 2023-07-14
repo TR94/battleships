@@ -66,8 +66,8 @@ class Board:
         """
         row =  random.randint(0, (int(self.size)-1))
         col = random.randint(0, (int(self.size)-1))
-
-        return [col, row]
+        
+        return [row, col]
 
     def add_ships(self):
         """
@@ -76,7 +76,15 @@ class Board:
         """
         for i in range (0, int(self.num_ships)):
             row, col = self.make_ship()
-            self.ships.append(str(row)+", "+str(col))
+            ship_made = (str(row)+", "+str(col))
+
+            #how to limit this to num_ships only?? if it has to re-run mid method it'll create too many
+            for ship in self.ships:
+                if ship != ship_made:
+                    self.ships.append(ship_made)
+                else:
+                    self.add_ships()
+
             if self.is_computer == False:
                 self.grid[row][col] = " @ "
 
