@@ -4,7 +4,7 @@ This game mimics the classic Battleships game and allows players to interact thr
 
 This programme has been made to complete the third project within the Code Institute Full Stack Developer course and focuses on the use of the Python language. It is run on a Code Institute template that allows the terminal to be run in a webpage for viewing. 
 
-[Link to the live project](https://battleships-123-fa5d91b20ea3.herokuapp.com/)
+[Link to the live project](https://battleships-123-fa5d91b20ea3.herokuapp.com/){:target="_blank"}
 
 # User Experience
 The target audience for this site are fans of the classic Battleships game. This programme will allow them to play the game against a randomised computer output with some customisable features such as board size and number of ships. 
@@ -334,9 +334,9 @@ This provides a web app that allows the Python code to be run on a web browser.
 
 # Credits 
 Code:
-To create a grid in the terminal I used W3 Resource: [Python data type list exercise](https://www.w3resource.com/python-exercises/list/python-data-type-list-exercise-86.php)
+To create a grid in the terminal I used W3 Resource: [Python data type list exercise](https://www.w3resource.com/python-exercises/list/python-data-type-list-exercise-86.php){:target="_blank"}
 
-To access the specific index of an array I reached out to the CI Slack community: [Slack post](https://code-institute-room.slack.com/archives/C027C3S3TEU/p1688542361938219)
+To access the specific index of an array I reached out to the CI Slack community: [Slack post](https://code-institute-room.slack.com/archives/C027C3S3TEU/p1688542361938219){:target="_blank"}
 
 ## Acknowledgements:
 Thank you to the tutor support at Code Institute for their guidance on various coding problems on this project.
