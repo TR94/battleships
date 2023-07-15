@@ -34,7 +34,7 @@ def validate_ships(size, num_ships):
 
 def validate_guess(guess, size):
     # Validates the player guess input
-    guess_limit = (int(self.size) - 1)
+    guess_limit = (int(size) - 1)
 
     try:
         int(guess)
@@ -76,35 +76,38 @@ class Board:
 
         return [row, col]
 
-    def add_ships(self):
+    def generate_ships(self):
         """
         Takes the number of ships inputted from the player and random generated ship co-ords
         and appends them to the ships list in the Board class
         """
-        for i in range(0, int(self.num_ships)):
+        # return length 
+
+        while len(self.ships) < (self.num_ships):
             row, col = self.make_ship()
             ship_made = (str(row)+", "+str(col))
             print(f"Ship made: {ship_made}")
 
-            # how to limit this to num_ships only?? if it has to re-run mid method it'll create too many
-            self.ships.append(ship_made)
+            if self.does_ship_exist(ship_made) == False:
+                self.ships.append(ship_made)
             
-            for ship in self.ships[0:-2]:
-                print(ship)
-                if self.ships[-1] = ship: # this code doesn't work!
-                    self.ships.append(ship_made) #pop
-                else:
-                    self.add_ships()
-
             if self.is_computer == False:
                 self.grid[row][col] = " @ "
 
+    def does_ship_exist(self, ship_made):
+        # checks if the ship made already exists in ship list
+
+        if ship_made == self.ships: #if in a list
+            return True
+        else:
+            return False
+            
     def build_board(self):
         # Builds board based on class variables
         for row in range(0, int(self.size)):
             self.grid.append([" * "] * int(self.size))
 
-        self.add_ships()
+        self.generate_ships()
 
     def render_board(self):
         # Render board to the terminal taking in ship position, misses and hits
@@ -157,7 +160,7 @@ class Board:
 
         if guessed == 1:
             print(f"{player_guess} has already been guessed, try again \n")
-            self.check_player_shot()
+            self.check_player_shot() 
         else:
             self.guesses.append(player_guess)
 
@@ -195,8 +198,8 @@ class Board:
 
         guess_row, guess_col = self.computer_guess()
         computer_guess = str(guess_row) + ", " + str(guess_col)
-        print(computer_guess)
-        print(player.ships)
+        print(f"Computer guess: {computer_guess}")
+        print(f"Player ships: {player.ships}")
         # Checks the guess hasn't been made already
         for guess in self.guesses:
             if computer_guess == guess:
@@ -267,6 +270,9 @@ def main():
 
     # Runs sequential rounds until all ships are sunk
     while computer.score or player.score < int(player.num_ships):
+        print(f"Computer score: {computer.score}")
+        print(f"Player score: {player.score}")
+        print(f"ships: {player.num_ships}")
 
         play = input("Press any key to continue or 'q' to quit\n")
         if play == "q":
@@ -274,6 +280,7 @@ def main():
             quit()
 
         else:
+            #make function - play game
             print("-"*20)
             print()
             player.render_board()
@@ -284,7 +291,8 @@ def main():
             print(f"Player sunk {player.score} out of {player.num_ships} battleships\n")
             print(f"Computer sunk {computer.score} of {computer.num_ships} battleships\n")
     else:
-        if computer.score == int(player.num_ships):
+        #make seperate function - render winner
+        if computer.score >= int(player.num_ships):
             print("***  Computer wins!!!  ***\n")
         else:
             print(f"***  {player.name} wins!!  ***\n")
