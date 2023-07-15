@@ -239,7 +239,15 @@ The user goals were set at the start of development during the Strategy phase. T
 Responsiveness within the webpage isn't a consideration for this backend programme. 
 
 ### Code Validation
-PEP8 - code institute 
+The code has been run through the Code Institute Python Linter. The results of this led to formatting changes which:
+- removed whitespaces 
+- removed blank lines 
+- aligned indents where required 
+- highlighted lines that were over 79 characters
+
+To deal with lines of code that were too long, a backslash "\" was inserted to carry the code onto the next line. 
+
+There are now zero errors shown when running the code through the Python Linter. 
 
 # Bugs
 Random ship placement:
