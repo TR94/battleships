@@ -333,7 +333,10 @@ The following steps were taken to deploy using Heroku:
 This provides a web app that allows the Python code to be run on a web browser. 
 
 # Credits 
-[refer to feedback from last assignment on this]
+Code:
+To create a grid in the terminal I used W3 Resource: [Python data type list exercise](https://www.w3resource.com/python-exercises/list/python-data-type-list-exercise-86.php)
+
+To access the specific index of an array I reached out to the CI Slack community: [Slack post](https://code-institute-room.slack.com/archives/C027C3S3TEU/p1688542361938219)
 
 ## Acknowledgements:
 Thank you to the tutor support at Code Institute for their guidance on various coding problems on this project.

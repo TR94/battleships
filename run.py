@@ -109,6 +109,7 @@ class Board:
         # Render board to the terminal taking in ship position, misses and hits
         print(f"{self.name}'s board \n")
 
+        # for loop creditted to W3 Resources, see link in ReadMe
         for i in self.grid:
             for j in i:
                 print(j, end=" ")
