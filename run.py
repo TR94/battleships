@@ -143,20 +143,17 @@ class Board:
         compares against computer ships
         Declares hit or miss
         """
-        guessed = 0
         hit = 0
 
         guess_row, guess_col = self.player_guess()
         player_guess = guess_row + ", " + guess_col
 
         # Checks the guess hasn't been made already
-        for guess in self.guesses:
-            if player_guess == guess:
-                guessed = 1
-
-        if guessed == 1:
+        while player_guess in self.guesses:
             print(f"{player_guess} has already been guessed, try again \n")
-            self.check_player_shot() 
+            guess_row, guess_col = self.player_guess()
+            player_guess = guess_row + ", " + guess_col
+            
         else:
             self.guesses.append(player_guess)
 
@@ -263,10 +260,6 @@ def main():
 
     # Runs sequential rounds until all ships are sunk
     while computer.score or player.score < int(player.num_ships):
-        print(f"Computer score: {computer.score}")
-        print(f"Player score: {player.score}")
-        print(f"ships: {player.num_ships}")
-
         play = input("Press any key to continue or 'q' to quit\n")
         if play == "q":
             print("Game ended")
