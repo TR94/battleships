@@ -154,33 +154,33 @@ The user goals were set at the start of development during the Strategy phase. T
 - Testing: Name input "Ty", board size "4", number of ships "3"
 - Result: Board name is correctly carried through, board size correct and number of ships printed on board correct.
 - Fix: N/A
-<br/>
+
 - Expected: "board size" input is validated within the given range of 4-9
     - Testing: Input 10
     - Result: Error raised stating maximum board size and input is too large. Prompted to try again. 
     - Fix: N/A
-<br/>
+
     - Testing: Input 3
     - Result: Error raised stating maximum board size and input is too large. Prompted to try again. 
     - Fix: N/A
-<br/>
+
     - Testing: Input "cat"
     - Result: Error raised stating needs to be an integer 
     - Fix: N/A
-<br/>
+
 - Expected: "number of ships" input is validated within a sensible range
     - Testing: Input 0
     - Result: Error raised stating too few ships, prompted to try again.
     - Fix: N/A
-<br/>
+
     - Testing: Input 20 based on board size of 4
     - Result: Error raised stating too many ships, prompted to try again.
     - Fix: N/A
-<br/>
+
     - Testing: Input "cat"
     - Result: Error raised stating needs to be an integer
     - Fix: N/A
-<br/>
+
     - Testing: Input 4
     - Result: Game boards are printed and game progresses
     - Fix: N/A
@@ -190,7 +190,7 @@ The user goals were set at the start of development during the Strategy phase. T
 - Testing: After number of battleships is entered, boards are printed
 - Result: Boards are printed as expected including player name, correctly sized and with the correct number of randomly positioned ships. Computer board doesn't show ships.
 - Fix: N/A
-<br/>
+
 - Expected: Player board shows the correct number of ships as inputted at the start of the game
 - Testing: After number of battleships is entered, boards are printed
 - Result: Player board has correct number of randomly positioned ships. Computer board doesn't show ships.
@@ -201,26 +201,26 @@ The user goals were set at the start of development during the Strategy phase. T
 - Testing: Visual
 - Result: Instructions are present and correct. Not necessarily clear what the limits are for the board size
 - Fix: Add into the instructions a literal that shows the guess limits.
-<br/>
+
 - Expected: Inputs for row and column are validated to be within the game board
     - Testing: Input 5
     - Result: Error stated that input is off the board and prompted to try again
     - Fix: N/A
-<br/>
+
     - Testing: Input "cat"
     - Result: Error raised stating needs to be an integer
     - Fix: N/A
-<br/>
+
 - Expected: Result of the round is communicated 
 - Testing: Input row 3, input col 3.
 - Result: Player and computer result communicated with miss
 - Fix: N/A
-<br/>
+
 - Expected: Inputted guess is printed correctly onto the computer board and indicates a hit or miss correctly
 - Testing: Input row 3, input col 3
 - Result: Displayed corrrectly as a miss "O" on the computer board
 - Fix: N/A
-<br/>
+
 - Expected: Inputted guess is printed correctly onto the computer board and indicates a hit or miss correctly
 - Testing: Input row 2, input col 3
 - Result: Displayed corrrectly as a hit "X" on the computer board
@@ -231,17 +231,17 @@ The user goals were set at the start of development during the Strategy phase. T
 - Testing: Visual
 - Result: Instructions are clear
 - Fix: N/A
-<br/>
+
 - Expected: Submitting "q" ends the game
 - Testing: Input "q"
 - Result: Game quits are expected 
 - Fix: N/A
-<br/>
+
 - Expected: Submitting any key (other than "q" continues the game)
     - Testing: Input "r" 
     - Result: Game continues to next round
     - Fix: N/A
-<br/>
+
     - Testing: Press enter key (i.e. blank input) 
     - Result: Game continues to next round
     - Fix: N/A
@@ -251,12 +251,12 @@ The user goals were set at the start of development during the Strategy phase. T
 - Testing: As above
 - Result: Boards are printed correctly with the hit/miss from previous round
 - Fix: N/A
-<br/>
+
 - Expected: A repeated guess from a previous round is rejected and asks to try again 
 - Testing: Input 3, 3 - has already been input once 
 - Result: Error raised stating this has already been guessed. Prompted to guess agian
 - Fix: N/A
-<br/>
+
 - Expected: Score is updated when a hit occurs with feedback to the player
 - Testing: Played until a hit occured
 - Result: Score updated with "Computer sunk 1 out of 4 ships"
@@ -278,7 +278,7 @@ The code has been run through the Code Institute Python Linter. The results of t
 - aligned indents where required 
 - highlighted lines that were over 79 characters
 
-To deal with lines of code that were too long, a backslash "<br/>" was inserted to carry the code onto the next line. 
+To deal with lines of code that were too long, a backslash "" was inserted to carry the code onto the next line. 
 
 There are now zero errors shown when running the code through the Python Linter. 
 
@@ -297,12 +297,30 @@ This was giving a range between 0 and a string which meant the random integer co
 
 random.randint(0, (int(self.size)-1))
 
+Duplication of ships:
+
+To generate a random ship location, a method is called and it is called a number of times depending on how many ships the player has requested. Each call for the method is indpendent so it was possible for the output (ship location) to be duplicated as below.
+
+![Random generate ships bug2](/assets/readMe_images/same_ships_bug.png)
+
+To resolve this, a validation stage was added to check the ship didn't already exist before it wa appended into the ship list. 
+
+Originally a for loop was used to create the required number of ships however if the loop was exited mid-way beceaue a duplicate was found it would start the loop again and subsequently create too many ships. This was resolved with a while loop which created and checked ships until the length of the ship list was correct. 
+
+Strings and integers:
+
+Many times through this project, the list data and numbers were not being compared correctly because the list data was in string form and the numbers were integers. An example of this can be seen below.
+
+![String and integer problem](/assets/readMe_images/string_int_bug.png)
+
+To resolve this issue str() and int() needed to be incorporated into the code appropriately to ensure the comparisons were a match.
+
 
 # Deployment
 To deploy a backend programme such as this one, Heroku has been used. A pure python programme is run in the terminal however using the Code Institute template this programme can be run in a mock terminal through a web based browser. 
 
 The following steps were taken to deploy using Heroku:
-- Due to a quirk with the mock terminal, each input requires a "<br/>n" for it to work 
+- Due to a quirk with the mock terminal, each input requires a "\n" for it to work 
 - A list of requirements is required to document the dependencies for the programme. This is created using the command "pip3 freeze > requirements.txt". Heroku will use these when building the app. 
 - Within Heroku, a new app is created with a unqiue name. 
 - The following settings are used:
