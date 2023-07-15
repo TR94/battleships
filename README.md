@@ -339,5 +339,8 @@ To create a grid in the terminal I used W3 Resource: <a href="https://www.w3reso
 To access the specific index of an array I reached out to the CI Slack community: <a href="https://code-institute-room.slack.com/archives/C027C3S3TEU/p1688542361938219" target="_blank">Slack post</a>
 
 ## Acknowledgements:
-Thank you to the tutor support at Code Institute for their guidance on various coding problems on this project.
+Thank you to the tutor support at Code Institute for their guidance on various coding problems on this project such as:
+- Global variables required for class instances 
+- Understanding lists, arrays and integers
+- Passing and accessing variables bewteen functions and methods
 
