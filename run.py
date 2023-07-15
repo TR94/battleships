@@ -118,8 +118,9 @@ class Board:
         """
         Prompts for player guess and feeds into validation
         """
-        print("Row = left to right.")
-        print("Column = top to bottom.")
+        guess_limit = int(self.size) - 1
+        print(f"Row = left to right (0 - {guess_limit})")
+        print(f"Column = top to bottom (0 - {guess_limit})")
         print("Top left corner is 0, 0\n")
 
         while True:
