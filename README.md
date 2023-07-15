@@ -332,6 +332,17 @@ The following steps were taken to deploy using Heroku:
 
 This provides a web app that allows the Python code to be run on a web browser. 
 
+# Future development
+Although the code is in a workable state it is quite repetitive and could benefit from refactoring to improve efficiency and readability. The following areas could be looked into:
+- Validation:
+    - Currently three validation inputs for board size, guess and number of ships. These could be simplified into one and passed the required object.
+- check_shot ():
+    - The player_check_shot and computer_check_shot methods are very similar and could be simplified into one.
+- main ():
+    - The main function does several tasks which currently is not very easy to read. This needs to be broken up into more discrete functions and these functions called as required. 
+- Classes and instances:
+    - At the moment there are two objects, computer and player. This could be increased to have other objects such as "ship" and the ship should hold information such as row and column, hit or miss, etc. This will help with the storing and accessing of information within the programme. 
+
 # Credits 
 Code:
 To create a grid in the terminal I used W3 Resource: <a href="https://www.w3resource.com/python-exercises/list/python-data-type-list-exercise-86.php" target="_blank">Python data type list exercise</a>
