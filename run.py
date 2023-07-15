@@ -37,7 +37,8 @@ def validate_guess(guess, size):
     try:
         int(guess)
         if int(guess) > (int(size)-1):
-            raise ValueError(f"Your guess was off the board, you wrote {guess} please choose a number between 0 and ({size}-1)")
+            raise ValueError(f"Your guess was off the board, you wrote {guess}.")
+            print(f"Please choose a number between 0 and ({size}-1)") #fix this too
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
         return False
@@ -81,11 +82,15 @@ class Board:
         for i in range(0, int(self.num_ships)):
             row, col = self.make_ship()
             ship_made = (str(row)+", "+str(col))
+            print(f"Ship made: {ship_made}")
 
             # how to limit this to num_ships only?? if it has to re-run mid method it'll create too many
-            for ship in self.ships:
-                if ship != ship_made:
-                    self.ships.append(ship_made)
+            self.ships.append(ship_made)
+            
+            for ship in self.ships[0:-2]:
+                print(ship)
+                if self.ships[-1] = ship: # this code doesn't work!
+                    self.ships.append(ship_made) #pop
                 else:
                     self.add_ships()
 
@@ -188,7 +193,8 @@ class Board:
 
         guess_row, guess_col = self.computer_guess()
         computer_guess = str(guess_row) + ", " + str(guess_col)
-
+        print(computer_guess)
+        print(player.ships)
         # Checks the guess hasn't been made already
         for guess in self.guesses:
             if computer_guess == guess:
@@ -242,11 +248,13 @@ def main():
     player = Board(name, size, num_ships)
     player.build_board()
     player.render_board()
+    print(f"Player ships: {player.ships}")
 
     global computer
     computer = Board("Computer", size, num_ships, is_computer=True)
     computer.build_board()
     computer.render_board()
+    print(f"Computer ships: {computer.ships}")
 
     # Runs first round
     player.check_player_shot()
