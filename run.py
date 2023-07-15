@@ -1,6 +1,7 @@
 from random import randint
 import random
 
+
 def validate_size(data):
     # Validates the board size data input
     try:
@@ -11,10 +12,11 @@ def validate_size(data):
             raise ValueError(f"Board size cannot be smaller than 4, you wrote {data}")
 
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again. \n") 
+        print(f"Invalid data: {e}, please try again. \n")
         return False
-    
+
     return True
+
 
 def validate_ships(size, num_ships):
     # Validates the number of ships data input
@@ -24,22 +26,24 @@ def validate_ships(size, num_ships):
         if int(num_ships) < 1:
             raise ValueError(f"Too few ships, you wrote {num_ships}. Please choose at least 1 ship")
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again. \n") 
+        print(f"Invalid data: {e}, please try again. \n")
         return False
 
     return True
+
 
 def validate_guess(guess, size):
     # Validates the player guess input
     try:
         int(guess)
-        if int(guess)> (int(size)-1):
+        if int(guess) > (int(size)-1):
             raise ValueError(f"Your guess was off the board, you wrote {guess} please choose a number between 0 and ({size}-1)")
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again. \n") 
+        print(f"Invalid data: {e}, please try again. \n")
         return False
 
     return True
+
 
 class Board:
     """
@@ -64,21 +68,21 @@ class Board:
         Takes the number of ships inputted from the player and generates
         random numbers to locate the ship(s)
         """
-        row =  random.randint(0, (int(self.size)-1))
+        row = random.randint(0, (int(self.size)-1))
         col = random.randint(0, (int(self.size)-1))
-        
+
         return [row, col]
 
     def add_ships(self):
         """
-        Takes the number of ships inputted from the player and random generated ship co-ords 
+        Takes the number of ships inputted from the player and random generated ship co-ords
         and appends them to the ships list in the Board class
         """
-        for i in range (0, int(self.num_ships)):
+        for i in range(0, int(self.num_ships)):
             row, col = self.make_ship()
             ship_made = (str(row)+", "+str(col))
 
-            #how to limit this to num_ships only?? if it has to re-run mid method it'll create too many
+            # how to limit this to num_ships only?? if it has to re-run mid method it'll create too many
             for ship in self.ships:
                 if ship != ship_made:
                     self.ships.append(ship_made)
@@ -89,29 +93,27 @@ class Board:
                 self.grid[row][col] = " @ "
 
     def build_board(self):
-    # Builds board based on class variables
+        # Builds board based on class variables
         for row in range(0, int(self.size)):
-            self.grid.append([" * "]* int(self.size))
+            self.grid.append([" * "] * int(self.size))
 
         self.add_ships()
 
     def render_board(self):
-    # Render board to the terminal taking in ship position, misses and hits
+        # Render board to the terminal taking in ship position, misses and hits
         print(f"{self.name}'s board \n")
 
         for i in self.grid:
             for j in i:
-                print(j, end = " ")
+                print(j, end=" ")
             print("\n")
 
     def player_guess(self):
         """
         Prompts for player guess and feeds into validation
         """
-        #check this as doesn't prompt a new guess at the moment
-        #check computer one as well 
-        print("Row = left to right.") 
-        print("Column = top to bottom.") 
+        print("Row = left to right.")
+        print("Column = top to bottom.")
         print("Top left corner is 0, 0\n")
 
         while True:
@@ -131,7 +133,7 @@ class Board:
 
     def check_player_shot(self):
         """
-        Takes player guess, checks it hasn't already been guessed and 
+        Takes player guess, checks it hasn't already been guessed and
         compares against computer ships
         Declares hit or miss
         """
@@ -141,18 +143,18 @@ class Board:
         guess_row, guess_col = self.player_guess()
         player_guess = guess_row + ", " + guess_col
 
-        #checks the guess hasn't been made already
+        # Checks the guess hasn't been made already
         for guess in self.guesses:
             if player_guess == guess:
                 guessed = 1
-        
+
         if guessed == 1:
             print(f"{player_guess} has already been guessed, try again \n")
             self.check_player_shot()
         else:
             self.guesses.append(player_guess)
-        
-        #checks if the guess is a hit or not and updates board
+
+        # Checks if the guess is a hit or not and updates board
         for ship in computer.ships:
             if ship == player_guess:
                 hit = 1
@@ -162,59 +164,59 @@ class Board:
         if hit == 1:
             print("*** HIT ***\n")
             computer.grid[int(guess_row)][int(guess_col)] = " X "
-            self.score +=1
+            self.score += 1
 
         else:
             print("*** MISS ***\n")
             computer.grid[int(guess_row)][int(guess_col)] = " O "
 
-
     def computer_guess(self):
         # Generate random computer move for each round
-        row =  random.randint(0, (int(self.size)-1))
+        row = random.randint(0, (int(self.size)-1))
         col = random.randint(0, (int(self.size)-1))
 
         return [col, row]
 
-
     def check_computer_shot(self):
-            """
-            Takes computer guess, checks it hasn't already been guessed and 
-            compares against player ships
-            Declares hit or miss
-            """
-            guessed = 0
-            hit = 0
+        """
+        Takes computer guess, checks it hasn't already been guessed and
+        compares against player ships
+        Declares hit or miss
+        """
+        guessed = 0
+        hit = 0
 
-            guess_row, guess_col = self.computer_guess()
-            computer_guess = str(guess_row) + ", " + str(guess_col)
+        guess_row, guess_col = self.computer_guess()
+        computer_guess = str(guess_row) + ", " + str(guess_col)
 
-            #checks the guess hasn't been made already
-            for guess in self.guesses:
-                if computer_guess == guess:
-                    guessed = 1
-            
-            if guessed == 1:
-                self.check_computer_shot()
-        
-            else:
-                self.guesses.append(computer_guess)
-            
-            #checks if the guess is a hit or not and updates board
-            print("Computer result: ")
-            
-            for ship in player.ships:
-                if ship == computer_guess:
-                    hit = 1
+        # Checks the guess hasn't been made already
+        for guess in self.guesses:
+            if computer_guess == guess:
+                guessed = 1
 
-            if hit == 1:
-                print("*** HIT ***\n")
-                player.grid[int(guess_row)][int(guess_col)] = " X "
-                self.score +=1
+        if guessed == 1:
+            self.check_computer_shot()
+            # doesn't loop to the top, gives "player result" multiple times in terminal
 
-            else:
-                print("*** MISS ***\n")
-                player.grid[int(guess_row)][int(guess_col)] = " O "
+        else:
+            self.guesses.append(computer_guess)
+
+        # Checks if the guess is a hit or not and updates board
+        print("Computer result: ")
+
+        for ship in player.ships:
+            if ship == computer_guess:
+                hit = 1
+
+        if hit == 1:
+            print("*** HIT ***\n")
+            player.grid[int(guess_row)][int(guess_col)] = " X "
+            self.score += 1
+
+        else:
+            print("*** MISS ***\n")
+            player.grid[int(guess_row)][int(guess_col)] = " O "
+
 
 def main():
     # Get parameters from player and feed into validation
@@ -235,31 +237,34 @@ def main():
         if validate_ships(size, num_ships):
             break
 
+    # Builds class instances and runs methods to build and print board
     global player
     player = Board(name, size, num_ships)
     player.build_board()
     player.render_board()
 
-    global computer 
+    global computer
     computer = Board("Computer", size, num_ships, is_computer=True)
     computer.build_board()
     computer.render_board()
-    
+
+    # Runs first round
     player.check_player_shot()
     computer.check_computer_shot()
     print("Scores after this round:")
     print(f"Player sunk {player.score} out of {player.num_ships} battleships\n")
     print(f"Computer sunk {computer.score} of {computer.num_ships} battleships\n")
 
+    # Runs sequential rounds until all ships are sunk
     while computer.score or player.score < int(player.num_ships):
 
         play = input("Press any key to continue or 'q' to quit\n")
         if play == "q":
             print("Game ended")
             quit()
-            
+
         else:
-            print ("-"*20)
+            print("-"*20)
             print()
             player.render_board()
             computer.render_board()
@@ -273,6 +278,6 @@ def main():
             print("***  Computer wins!!!  ***\n")
         else:
             print(f"***  {player.name} wins!!  ***\n")
-        
-main()
 
+
+main()
