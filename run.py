@@ -81,12 +81,9 @@ class Board:
         Takes the number of ships inputted from the player and random generated ship co-ords
         and appends them to the ships list in the Board class
         """
-        # return length 
-
         while len(self.ships) < (int(self.num_ships)):
             row, col = self.make_ship()
             ship_made = (str(row)+", "+str(col))
-            print(f"Ship made: {ship_made}")
 
             if self.does_ship_exist(ship_made) == False:
                 self.ships.append(ship_made)
@@ -96,7 +93,6 @@ class Board:
 
     def does_ship_exist(self, ship_made):
         # checks if the ship made already exists in ship list
-
         if ship_made in self.ships:
             return True
         else:
@@ -181,7 +177,7 @@ class Board:
             computer.grid[int(guess_row)][int(guess_col)] = " O "
 
     def computer_guess(self):
-        # Generate random computer move for each round
+        # Generate random computer guess for each round
         row = random.randint(0, (int(self.size)-1))
         col = random.randint(0, (int(self.size)-1))
 
@@ -198,8 +194,7 @@ class Board:
 
         guess_row, guess_col = self.computer_guess()
         computer_guess = str(guess_row) + ", " + str(guess_col)
-        print(f"Computer guess: {computer_guess}")
-        print(f"Player ships: {player.ships}")
+        
         # Checks the guess hasn't been made already
         for guess in self.guesses:
             if computer_guess == guess:
@@ -253,13 +248,11 @@ def main():
     player = Board(name, size, num_ships)
     player.build_board()
     player.render_board()
-    print(f"Player ships: {player.ships}")
 
     global computer
     computer = Board("Computer", size, num_ships, is_computer=True)
     computer.build_board()
     computer.render_board()
-    print(f"Computer ships: {computer.ships}")
 
     # Runs first round
     player.check_player_shot()
