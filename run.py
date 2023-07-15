@@ -34,11 +34,13 @@ def validate_ships(size, num_ships):
 
 def validate_guess(guess, size):
     # Validates the player guess input
+    guess_limit = (int(self.size) - 1)
+
     try:
         int(guess)
         if int(guess) > (int(size)-1):
             raise ValueError(f"Your guess was off the board, you wrote {guess}.")
-            print(f"Please choose a number between 0 and ({size}-1)") #fix this too
+            print(f"Please choose a number between 0 and ({guess_limit})")
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
         return False
