@@ -145,42 +145,42 @@ The user goals were set at the start of development during the Strategy phase. T
 ### Functionality testing:
 #### Page loading:
 - Expected: Page should load in the terminal with no errors
-- Testing:
-- Result:
-- Fix:
-
-#### Start game inputs:
-- Expected: Inputs for "name", "board size" and "number of ships" are carried into the game
 - Testing: type "python3 run.py" into the terminal 
 - Result: No errors reported
 - Fix: N/A
-&NewLine;
+
+#### Start game inputs:
+- Expected: Inputs for "name", "board size" and "number of ships" are carried into the game
+- Testing: Name input "Ty", board size "4", number of ships "3"
+- Result: Board name is correctly carried through, board size correct and number of ships printed on board correct.
+- Fix: N/A
+\
 - Expected: "board size" input is validated within the given range of 4-9
     - Testing: Input 10
     - Result: Error raised stating maximum board size and input is too large. Prompted to try again. 
     - Fix: N/A
-&NewLine;
+\
     - Testing: Input 3
     - Result: Error raised stating maximum board size and input is too large. Prompted to try again. 
     - Fix: N/A
-&NewLine;
+\
     - Testing: Input "cat"
     - Result: Error raised stating needs to be an integer 
     - Fix: N/A
-&NewLine;
+\
 - Expected: "number of ships" input is validated within a sensible range
     - Testing: Input 0
     - Result: Error raised stating too few ships, prompted to try again.
     - Fix: N/A
-&NewLine;
+\
     - Testing: Input 20 based on board size of 4
     - Result: Error raised stating too many ships, prompted to try again.
     - Fix: N/A
-&NewLine;
+\
     - Testing: Input "cat"
     - Result: Error raised stating needs to be an integer
     - Fix: N/A
-&NewLine;
+\
     - Testing: Input 4
     - Result: Game boards are printed and game progresses
     - Fix: N/A
@@ -190,7 +190,7 @@ The user goals were set at the start of development during the Strategy phase. T
 - Testing: After number of battleships is entered, boards are printed
 - Result: Boards are printed as expected including player name, correctly sized and with the correct number of randomly positioned ships. Computer board doesn't show ships.
 - Fix: N/A
-&NewLine;
+\
 - Expected: Player board shows the correct number of ships as inputted at the start of the game
 - Testing: After number of battleships is entered, boards are printed
 - Result: Player board has correct number of randomly positioned ships. Computer board doesn't show ships.
@@ -201,26 +201,26 @@ The user goals were set at the start of development during the Strategy phase. T
 - Testing: Visual
 - Result: Instructions are present and correct. Not necessarily clear what the limits are for the board size
 - Fix: Add into the instructions a literal that shows the guess limits.
-&NewLine;
+\
 - Expected: Inputs for row and column are validated to be within the game board
     - Testing: Input 5
     - Result: Error stated that input is off the board and prompted to try again
     - Fix: N/A
-&NewLine;
+\
     - Testing: Input "cat"
     - Result: Error raised stating needs to be an integer
     - Fix: N/A
-&NewLine;
+\
 - Expected: Result of the round is communicated 
 - Testing: Input row 3, input col 3.
 - Result: Player and computer result communicated with miss
 - Fix: N/A
-&NewLine;
+\
 - Expected: Inputted guess is printed correctly onto the computer board and indicates a hit or miss correctly
 - Testing: Input row 3, input col 3
 - Result: Displayed corrrectly as a miss "O" on the computer board
 - Fix: N/A
-&NewLine;
+\
 - Expected: Inputted guess is printed correctly onto the computer board and indicates a hit or miss correctly
 - Testing: Input row 2, input col 3
 - Result: Displayed corrrectly as a hit "X" on the computer board
@@ -231,17 +231,17 @@ The user goals were set at the start of development during the Strategy phase. T
 - Testing: Visual
 - Result: Instructions are clear
 - Fix: N/A
-&NewLine;
+\
 - Expected: Submitting "q" ends the game
 - Testing: Input "q"
 - Result: Game quits are expected 
 - Fix: N/A
-&NewLine;
+\
 - Expected: Submitting any key (other than "q" continues the game)
     - Testing: Input "r" 
     - Result: Game continues to next round
     - Fix: N/A
-&NewLine;
+\
     - Testing: Press enter key (i.e. blank input) 
     - Result: Game continues to next round
     - Fix: N/A
@@ -251,12 +251,12 @@ The user goals were set at the start of development during the Strategy phase. T
 - Testing: As above
 - Result: Boards are printed correctly with the hit/miss from previous round
 - Fix: N/A
-&NewLine;
+\
 - Expected: A repeated guess from a previous round is rejected and asks to try again 
 - Testing: Input 3, 3 - has already been input once 
 - Result: Error raised stating this has already been guessed. Prompted to guess agian
 - Fix: N/A
-&NewLine;
+\
 - Expected: Score is updated when a hit occurs with feedback to the player
 - Testing: Played until a hit occured
 - Result: Score updated with "Computer sunk 1 out of 4 ships"
