@@ -123,13 +123,13 @@ class Board:
         print("Top left corner is 0, 0\n")
 
         while True:
-            guess_row = input("Input row guess: ")
+            guess_row = input("Input row guess: \n")
 
             if validate_guess(guess_row, self.size):
                 break
 
         while True:
-            guess_col = input("Input column guess: ")
+            guess_col = input("Input column guess: \n")
             print()
 
             if validate_guess(guess_col, self.size):
@@ -216,18 +216,18 @@ class Board:
 def main():
     # Get parameters from player and feed into validation
     print("Welcome to Battleships online game")
-    name = input("Please enter your name: ")
+    name = input("Please enter your name: \n")
     print()
 
     while True:
         print("Board size available from 4-9")
-        size = input("Please enter the desired board size: ")
+        size = input("Please enter the desired board size: \n")
         if validate_size(size):
             break
 
     while True:
         print()
-        num_ships = input("Please enter the desired number of battleships: ")
+        num_ships = input("Please enter the desired number of battleships: \n")
         print()
         if validate_ships(size, num_ships):
             break
