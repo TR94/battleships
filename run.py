@@ -83,7 +83,7 @@ class Board:
         """
         # return length 
 
-        while len(self.ships) < (self.num_ships):
+        while len(self.ships) < (int(self.num_ships)):
             row, col = self.make_ship()
             ship_made = (str(row)+", "+str(col))
             print(f"Ship made: {ship_made}")
@@ -97,7 +97,7 @@ class Board:
     def does_ship_exist(self, ship_made):
         # checks if the ship made already exists in ship list
 
-        if ship_made == self.ships: #if in a list
+        if ship_made in self.ships:
             return True
         else:
             return False
