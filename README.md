@@ -4,7 +4,7 @@ This game mimics the classic Battleships game and allows players to interact thr
 
 This programme has been made to complete the third project within the Code Institute Full Stack Developer course and focuses on the use of the Python language. It is run on a Code Institute template that allows the terminal to be run in a webpage for viewing. 
 
-Link to live project: [This is an external link to Heroku](https:...)
+Link to live project: [This is an external link to Heroku](https://battleships-123-fa5d91b20ea3.herokuapp.com/)
 
 # User Experience
 The target audience for this site are fans of the classic Battleships game. This programme will allow them to play the game against a randomised computer output with some customisable features such as board size and number of ships. 
