@@ -143,8 +143,6 @@ class Board:
         compares against computer ships
         Declares hit or miss
         """
-        hit = 0
-
         guess_row, guess_col = self.player_guess()
         player_guess = guess_row + ", " + guess_col
 
@@ -158,11 +156,12 @@ class Board:
             self.guesses.append(player_guess)
 
         # Checks if the guess is a hit or not and updates board
+        hit = 0
+        print("Player result: ")
+
         for ship in computer.ships:
             if ship == player_guess:
                 hit = 1
-
-        print("Player result: ")
 
         if hit == 1:
             print("*** HIT ***\n")
@@ -186,25 +185,18 @@ class Board:
         compares against player ships
         Declares hit or miss
         """
-        guessed = 0
-        hit = 0
-
         guess_row, guess_col = self.computer_guess()
         computer_guess = str(guess_row) + ", " + str(guess_col)
         
         # Checks the guess hasn't been made already
-        for guess in self.guesses:
-            if computer_guess == guess:
-                guessed = 1
-
-        if guessed == 1:
-            self.check_computer_shot()
-            # doesn't loop to the top, gives "player result" multiple times in terminal
-
+        while computer_guess in self.guesses:
+            guess_row, guess_col = self.computer_guess()
+            computer_guess = str(guess_row) + ", " + str(guess_col)
         else:
             self.guesses.append(computer_guess)
 
         # Checks if the guess is a hit or not and updates board
+        hit = 0
         print("Computer result: ")
 
         for ship in player.ships:
@@ -255,18 +247,17 @@ def main():
     player.check_player_shot()
     computer.check_computer_shot()
     print("Scores after this round:")
-    print(f"Player sunk {player.score} out of {player.num_ships} battleships\n")
+    print(f"Player sunk {player.score} of {player.num_ships} battleships\n")
     print(f"Computer sunk {computer.score} of {computer.num_ships} battleships\n")
 
     # Runs sequential rounds until all ships are sunk
-    while computer.score or player.score < int(player.num_ships):
+    while computer.score < int(player.num_ships) and player.score < int(player.num_ships):
         play = input("Press any key to continue or 'q' to quit\n")
         if play == "q":
             print("Game ended")
             quit()
 
         else:
-            #make function - play game
             print("-"*20)
             print()
             player.render_board()
@@ -274,10 +265,9 @@ def main():
 
             player.check_player_shot()
             computer.check_computer_shot()
-            print(f"Player sunk {player.score} out of {player.num_ships} battleships\n")
+            print(f"Player sunk {player.score} of {player.num_ships} battleships\n")
             print(f"Computer sunk {computer.score} of {computer.num_ships} battleships\n")
     else:
-        #make seperate function - render winner
         if computer.score >= int(player.num_ships):
             print("***  Computer wins!!!  ***\n")
         else:
